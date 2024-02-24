@@ -66,7 +66,9 @@ def single_map(dataframe,geo):
 
     
     st_folium(single_map_var,width='100%')
-    
+
+st.set_page_config(page_title='Predicting Malnutrition', page_icon='💪', layout="centered", initial_sidebar_state="collapsed", menu_items=None)
+
 tab1, tab2, tab3, tab4, tab5, tab6, tab7 = st.tabs(['FNRI','WHO standards','Dataset','EDA','Choropleth map','ML training', 'Deployment'])
 
 with tab1:
