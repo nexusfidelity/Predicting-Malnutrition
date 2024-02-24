@@ -311,17 +311,17 @@ with tab7:
             'girl':1,
             }})
         
-        stunting_prediction = predict_model(stunting_model,data = df_input_stunting)
+        stunting_prediction = predict_model(stunting_model,data = df_input_stunting,verbose=False)
         
         st.write('stunting prediction: '+stunting_prediction.iloc[0,-2])
         st.write('prediction confidence: '+str((stunting_prediction.iloc[0,-1])*100))
         
-        wasting_prediction = predict_model(wasting_model,data = df_input_stunting)
+        wasting_prediction = predict_model(wasting_model,data = df_input_stunting,verbose=False)
         
         st.write('wasting prediction: '+wasting_prediction.iloc[0,-2])
         st.write('prediction confidence: '+str((wasting_prediction.iloc[0,-1])*100))
         
-        weight_prediction = predict_model(weight_model,data = df_input_stunting)
+        weight_prediction = predict_model(weight_model,data = df_input_stunting,verbose=False)
     
         st.write('weight status prediction: '+weight_prediction.iloc[0,-2])
         st.write('prediction confidence: '+str((weight_prediction.iloc[0,-1])*100))
