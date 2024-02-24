@@ -67,7 +67,7 @@ def single_map(dataframe,geo):
     
     st_folium(single_map_var,width='100%')
 
-st.set_page_config(page_title='Predicting Malnutrition', page_icon='💪', layout="centered", initial_sidebar_state="collapsed", menu_items=None)
+st.set_page_config(page_title='Predicting Malnutrition', page_icon='🤖', layout="centered", initial_sidebar_state="collapsed", menu_items=None)
 
 tab1, tab2, tab3, tab4, tab5, tab6, tab7 = st.tabs(['FNRI','WHO standards','Dataset','EDA','Choropleth map','ML training', 'Deployment'])
 
@@ -287,10 +287,10 @@ with tab7:
     
     col1, col2, col3, col4 = st.columns(4)
     
-    age = col1.number_input('Age',min_value=0.0,max_value=5.0)
+    age = col1.number_input('Age (years old)',min_value=0.0,max_value=5.0, help='0-5 years old')
     sex = col2.selectbox('Gender',['boy','girl'])
-    height = col3.number_input('Height')
-    weight = col4.number_input('Weight')
+    height = col3.number_input('Height (cm)')
+    weight = col4.number_input('Weight (kg)')
     
     submit_button = st.button('Submit',use_container_width=True)
     
