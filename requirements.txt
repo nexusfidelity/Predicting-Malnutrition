@@ -1,0 +1,7 @@
+streamlit
+pycaret
+pandas
+geopandas
+matplotlib
+streamlit_folium==0.15.0
+folium==0.14.0
