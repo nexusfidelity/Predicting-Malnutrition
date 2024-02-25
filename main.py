@@ -104,7 +104,7 @@ with tab2:
     st.link_button("Go to WHO standards", "https://www.who.int/tools/child-growth-standards")
     
     st.subheader('Stunting')
-    
+    st.write('Stunting is defined as low height-for-age. It is the result of chronic or recurrent undernutrition, usually associated with poverty, poor maternal health and nutrition, frequent illness and/or inappropriate feeding and care in early life. Stunting prevents children from reaching their physical and cognitive potential.')
     col1, col2 = st.columns(2)
     with col1:
         st.image('images/weight-boy.png')
@@ -112,7 +112,7 @@ with tab2:
         st.image('images/weight-girl.png')
     
     st.subheader('Wasting')
-    
+    st.write('Wasting is defined as low weight-for-height. It often indicates recent and severe weight loss, although it can also persist for a long time. It usually occurs when a person has not had food of adequate quality and quantity and/or they have had frequent or prolonged illnesses.')
     col1, col2 = st.columns(2)
     with col1:
         st.image('images/weight-for-height-boys.png')
@@ -182,7 +182,7 @@ with tab4:
 with tab5:
     st.header('Map')
     
-    var = st.selectbox('select variable',['moderately stunted','severely stunted','moderately wasted','severely wasted','underweight','overweight','obese'])
+    var = st.selectbox('select variable',['moderately stunted','severely stunted','moderately wasted','severely wasted','underweight','overweight','obese'], index = 0)
     
     if var == 'moderately stunted' or var == 'severely stunted':
         df_map = df[df['stunted'] == var]
@@ -195,7 +195,7 @@ with tab5:
     if var == 'underweight' or var == 'overweight' or var == 'obese':
         df_map = df[df['weight_status'] == var]
         df_map = df_map.groupby(['Province'])['weight_status'].value_counts()#.to_frame()
-        
+    
     single_map(df_map,geojson)
 
 with tab6:
@@ -227,6 +227,11 @@ with tab6:
             evaluate_model(stunting_model)
             ''',)
             
+    st.image('images/stunting-compare-models.png')
+    st.image('images/stunting-confusion-matrix.png')
+    st.image('images/stunting-prediction-error.png')
+    st.image('images/stunting-feature-importance.png')
+            
     st.subheader('Wasting')
     
     st.code('''
@@ -254,6 +259,11 @@ with tab6:
             evaluate_model(wasting_model)
             ''',)
     
+    st.image('images/wasting-compare-models.png')
+    st.image('images/wasting-confusion-matrix.png')
+    st.image('images/wasting-prediction-error.png')
+    st.image('images/wasting-feature-importance.png')
+    
     st.code('''
             save_model(wasting_model, 'wasting_model')
             ''',)
@@ -277,6 +287,11 @@ with tab6:
     st.code('''
             evaluate_model(weight_status_model)
             ''',)
+    
+    st.image('images/weight-compare-models.png')
+    st.image('images/weight-confusion-matrix.png')
+    st.image('images/weight-prediction-error.png')
+    st.image('images/weight-feature-importance.png')
     
     st.code('''
             save_model(weight_status_model, 'weight_status_model')
